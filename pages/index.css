@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .header {
@@ -34,6 +36,7 @@
   line-height: 48px;
   font-weight: 500;
   grid-area: title;
+  margin: 0;
 }
 
 .profile__info {
@@ -50,10 +53,15 @@
   font-weight: 400;
   grid-area: description;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
   background: transparent url(../images/Vector\ Pencil.svg) center no-repeat;
+  border-color: white;
+  align-self: center;
   height: 24px;
   width: 24px;
   grid-area: button;
@@ -61,6 +69,7 @@
 
 .profile__add-button {
   background: transparent url(../images/Vector\ Plus.svg) center no-repeat;
+  border-color: white;
   width: 150px;
   height: 50px;
   margin-left: auto;
@@ -73,4 +82,102 @@
   object-fit: cover;
   background-position: center;
   margin-right: 24px;
+}
+
+.cards {
+  margin-top: 30px;
+}
+
+.card__list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-gap: 20px 17px;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.card__image {
+  width: 282px;
+  height: 282px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card__description {
+  display: flex;
+  background-color: white;
+  color: black;
+  padding: 25px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card__title {
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__like-button {
+  background: transparent url(../images/Vector\ Heart.svg) center;
+  border: none;
+  width: 21px;
+  height: 18px;
+}
+
+@media screen and (max-width: 770px) {
+}
+
+@media screen and (max-width: 590px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .profile__add-button {
+    margin: 0 0 6px;
+    width: 282px;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+
+  .profile__title {
+    font-size: 22px;
+    line-height: 22px;
+    margin: 30px 10px 0 0;
+  }
+
+  .profile__description {
+    font-size: 14px;
+    line-height: 14px;
+    margin: 14px 0 36px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    align-self: end;
+  }
 }
