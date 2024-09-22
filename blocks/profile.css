@@ -56,7 +56,7 @@
 
 .profile__add-button {
   background: transparent url(../images/Vector_Plus.svg) center no-repeat;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-color: white;
   width: 150px;
@@ -65,7 +65,7 @@
 }
 
 .profile__add-button:hover {
-  opacity: 60%;
+  opacity: 0.5;
   cursor: pointer;
 }
 
