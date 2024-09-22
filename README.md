@@ -24,5 +24,5 @@ Project Around The US was made to bring together and test all the elements I had
 [Webpage layout at 580px](./images/Demo/P3%20580.png)
 
 **Summary**
-
+[Link to project on github page](https://bbjuiceev.github.io/se_project_aroundtheus/)
 [Link to summary video](https://drive.google.com/file/d/1Gt8QcO06YJJFrCilRrRG6Nb-beVKlnAb/view?usp=sharing)
