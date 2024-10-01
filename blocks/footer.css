@@ -12,3 +12,15 @@
   font-weight: 400;
   color: #545454;
 }
+
+@media screen and (max-width: 590px) {
+  .footer {
+    margin-top: 48px;
+    margin-bottom: 36px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
