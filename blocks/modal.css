@@ -59,20 +59,16 @@
 }
 
 .modal__button {
+  color: #fff;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: Inter, Arial, sans-serif;
+  font-weight: 400;
   background-color: #000;
   border: none;
   border-radius: 2px;
   height: 50px;
   margin: 0 0 37px;
-}
-
-.modal__button-text {
-  color: #fff;
-  font-size: 18px;
-  line-height: 22px;
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  font-weight: 400;
 }
 
 .modal_opened {
@@ -124,13 +120,10 @@
   }
 
   .modal__button {
-    height: 46px;
-    margin: 0 0 25px;
-  }
-
-  .modal__button-text {
     font-size: 14px;
     line-height: 17px;
+    height: 46px;
+    margin: 0 0 25px;
   }
 
   .modal__close {
