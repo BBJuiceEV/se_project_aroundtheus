@@ -57,7 +57,6 @@ function getCardElement(cardData) {
   cardImageEl.src = cardData.link;
   cardTitleEl.textContent = cardData.name;
   cardImageEl.alt = cardData.name;
-
   return cardElement;
 }
 
