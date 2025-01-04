@@ -30,13 +30,40 @@ const initialCards = [
 /* -------------------------------------------------------------------------- */
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const modalCloseBtn = document.querySelector("#modal-close-button");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+const profileNameInput = document.querySelector("#profile-name-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+const profileEditForm = profileEditModal.querySelector(".modal__form");
 
+/* -------------------------------------------------------------------------- */
+/*                                  Functions                                 */
+/* -------------------------------------------------------------------------- */
+function closePopup() {
+  profileEditModal.classList.remove("modal_opened");
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Handlers                               */
+/* -------------------------------------------------------------------------- */
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+}
+/* -------------------------------------------------------------------------- */
+/*                               Event Listeners                              */
+/* -------------------------------------------------------------------------- */
 profileEditBtn.addEventListener("click", () => {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   profileEditModal.classList.add("modal_opened");
 });
 
-const modalCloseBtn = document.querySelector("#modal-close-button");
+modalCloseBtn.addEventListener("click", closePopup());
 
-modalCloseBtn.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal_opened");
-});
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);

@@ -4,7 +4,7 @@
   padding-top: 40px;
 }
 
-.profile__title {
+.profile__name {
   font-size: 41px;
   line-height: 48px;
   font-family: Inter, Arial, sans-serif;
@@ -83,7 +83,7 @@
     grid-template-columns: minmax(auto, 300px) auto;
   }
 
-  .profile__title {
+  .profile__name {
     font-size: 33px;
     line-height: 40px;
   }
@@ -127,7 +127,7 @@
     margin: 0;
   }
 
-  .profile__title {
+  .profile__name {
     font-size: 22px;
     line-height: 22px;
     margin: 30px 10px 0 0;
