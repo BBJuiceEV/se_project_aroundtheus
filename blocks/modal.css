@@ -42,13 +42,17 @@
   width: 358px;
   font-family: Inter, Arial, sans-serif;
   font-weight: 400;
-  margin: 0 0 30px;
+  margin: 0;
   padding: 0;
+}
+
+.modal__input {
+  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.modal__form:last-of-type {
+.modal__input:last-of-type {
   margin-bottom: 48px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
