@@ -50,6 +50,7 @@ const addNewCardBtn = document.querySelector("#profile-add-button");
 const addNewCardModalCloseBtn = addCardModal.querySelector(
   "#add-card-modal-close-button"
 );
+const likeBtn = document.querySelector(".card__like-button");
 
 // Form Data
 const profileNameInput = document.querySelector("#profile-name-input");
@@ -82,10 +83,21 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeBtn = cardElement.querySelector(".card__like-button");
+  // find delete button
+  //add event listener to delete button
+  //cardElement.remove();
+
+  //add click listener to card image element
+  //openModal with previewImageModal
+  likeBtn.addEventListener("click", () => {
+    likeBtn.classList.toggle("card__like-button_active");
+  });
 
   cardImageEl.src = cardData.link;
   cardTitleEl.textContent = cardData.name;
   cardImageEl.alt = cardData.name;
+
   return cardElement;
 }
 

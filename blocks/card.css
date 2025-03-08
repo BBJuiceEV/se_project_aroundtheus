@@ -35,10 +35,14 @@
 }
 
 .card__like-button {
-  background: transparent url(../images/Vector_Heart.svg) center;
+  background: transparent url(../images/Heart_inactive.svg) center;
   border: none;
   width: 21px;
   height: 18px;
+}
+
+.card__like-button_active {
+  background-image: url(../images/Heart_active.svg);
 }
 
 .card__like-button:hover {
