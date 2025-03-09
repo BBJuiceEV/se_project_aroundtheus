@@ -46,6 +46,22 @@
   padding: 0;
 }
 
+.modal__image {
+  max-width: 75vw;
+  max-height: 75vh;
+  height: auto;
+  width: auto;
+  display: flex;
+  background: transparent;
+  border-radius: 0;
+}
+
+.modal__image-container {
+  padding: 0;
+  position: relative;
+  margin: auto;
+}
+
 .modal__input {
   margin-bottom: 30px;
   border: none;

@@ -100,10 +100,23 @@
         </form>
       </div>
     </div>
-    <!-- ----------------------------------------------------------------------- -->
+    <!-- ------------------------- Preview Image Modal ------------------------- -->
+    <div class="modal" id="view-image-modal">
+      <div class="modal__image-container">
+        <button
+          type="button"
+          class="modal__close"
+          id="view-image-modal-close-button"
+        ></button>
+        <img src="" alt="" class="modal__image" id="view-image-modal-pic" />
+        <h2 class="card__title" id="view-image-modal-title"></h2>
+      </div>
+    </div>
+    <!-- ---------------------------- Card Template ---------------------------- -->
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button type="button" class="card__delete-button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button type="button" class="card__like-button"></button>
