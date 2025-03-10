@@ -5,13 +5,13 @@
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  /* display: flex; */
-  display: none;
+  display: flex;
   padding: 0 19px;
-  /*align-items: center;
+  align-items: center;
   justify-content: center;
-  One way of getting the pop-up centered */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s linear, visibility 0s 0.5s;
 }
 
 .modal__container {
@@ -94,6 +94,9 @@
 
 .modal_opened {
   display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s linear;
 }
 
 .modal__close {
