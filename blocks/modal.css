@@ -62,6 +62,13 @@
   margin: auto;
 }
 
+.modal__view_image-title {
+  font: inter, arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+}
+
 .modal__input {
   margin-bottom: 30px;
   border: none;
@@ -155,5 +162,15 @@
     height: 26px;
     bottom: calc(100% + 14px);
     left: calc(90% - 5px);
+  }
+
+  .modal__close-image {
+    bottom: calc(100% + 5px);
+    left: calc(100% + 5px);
+  }
+
+  .modal__image {
+    max-width: 240px;
+    max-height: 400px;
   }
 }
