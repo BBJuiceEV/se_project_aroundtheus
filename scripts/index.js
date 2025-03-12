@@ -130,6 +130,8 @@ function handleAddCardFormSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
+  cardTitleInput.value = "";
+  cardUrlInput.value = "";
   closeModal(addCardModal);
 }
 
