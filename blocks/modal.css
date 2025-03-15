@@ -63,7 +63,7 @@
 }
 
 .modal__view_image-title {
-  font: inter, arial, sans-serif;
+  font-family: inter, arial, sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
@@ -116,7 +116,7 @@
   bottom: calc(100% + 5px) /* top: -45px; (another variation) */;
   left: calc(100% + 5px) /* right: -45px; (another variation) */;
   background-color: transparent;
-  background-position: no-repeat;
+  background-repeat: no-repeat;
   background-size: contain;
 }
 
