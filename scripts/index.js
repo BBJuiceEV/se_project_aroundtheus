@@ -58,9 +58,9 @@ const imageViewCloseBtn = imageViewModal.querySelector(
 );
 
 // Form Data
-const profileNameInput = document.querySelector("#profile-name-input");
+const profileNameInput = document.querySelector("#edit-profile-name-input");
 const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
+  "#edit-profile-description-input"
 );
 const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
@@ -134,7 +134,6 @@ function handleAddCardFormSubmit(e) {
   cardUrlInput.value = "";
   closeModal(addCardModal);
 }
-
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
