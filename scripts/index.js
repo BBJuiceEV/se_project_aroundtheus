@@ -63,9 +63,9 @@ const profileDescriptionInput = document.querySelector(
   "#edit-profile-description-input"
 );
 const cardTitleInput = addCardFormElement.querySelector(
-  ".modal__input_type_title"
+  "#add-card-title-input"
 );
-const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
+const cardUrlInput = addCardFormElement.querySelector("#add-card-url-input");
 const imageViewTitleEl = imageViewModal.querySelector(
   "#view-image-modal-title"
 );
