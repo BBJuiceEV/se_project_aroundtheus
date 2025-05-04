@@ -74,11 +74,13 @@ const imageViewImgEl = imageViewModal.querySelector("#view-image-modal-pic");
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", handleEscKey);
+}
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", handleEscKey);
 }
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -134,6 +136,16 @@ function handleAddCardFormSubmit(e) {
   cardUrlInput.value = "";
   closeModal(addCardModal);
 }
+const isEscEvent = (evt, action) => {
+  const activeModal = document.querySelector(".modal_opened");
+  if (evt.key === "Escape") {
+    action(activeModal);
+  }
+};
+const handleEscKey = (evt) => {
+  evt.preventDefault();
+  isEscEvent(evt, closeModal);
+};
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -159,6 +171,32 @@ addNewCardModalCloseBtn.addEventListener("click", () =>
 //*
 imageViewCloseBtn.addEventListener("click", () => {
   closeModal(imageViewModal);
+});
+
+// close modal when clicking on the overlay
+profileEditModal.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__opened")
+  ) {
+    closeModal(profileEditModal);
+  }
+});
+addCardModal.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__opened")
+  ) {
+    closeModal(addCardModal);
+  }
+});
+imageViewModal.addEventListener("mousedown", (evt) => {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__opened")
+  ) {
+    closeModal(imageViewModal);
+  }
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
