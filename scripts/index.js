@@ -136,7 +136,7 @@ function handleAddCardFormSubmit(e) {
   cardUrlInput.value = "";
   closeModal(addCardModal);
 }
-const isEscEvent = (evt, action) => {
+const handleEscEvent = (evt, action) => {
   const activeModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
     action(activeModal);
@@ -174,29 +174,17 @@ imageViewCloseBtn.addEventListener("click", () => {
 });
 
 // close modal when clicking on the overlay
-profileEditModal.addEventListener("mousedown", (evt) => {
+const handleModalClose = (evt) => {
   if (
     evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__opened")
+    evt.target.classList.contains("modal_opened")
   ) {
-    closeModal(profileEditModal);
+    closeModal(evt.currentTarget);
   }
-});
-addCardModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__opened")
-  ) {
-    closeModal(addCardModal);
-  }
-});
-imageViewModal.addEventListener("mousedown", (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__opened")
-  ) {
-    closeModal(imageViewModal);
-  }
+};
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", handleModalClose);
 });
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
