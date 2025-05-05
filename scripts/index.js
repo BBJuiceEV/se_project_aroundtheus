@@ -144,7 +144,7 @@ const handleEscEvent = (evt, action) => {
 };
 const handleEscKey = (evt) => {
   evt.preventDefault();
-  isEscEvent(evt, closeModal);
+  handleEscEvent(evt, closeModal);
 };
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
