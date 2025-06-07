@@ -168,7 +168,13 @@ function handleAddCardFormSubmit(e) {
   cardTitleInput.value = "";
   cardUrlInput.value = "";
   closeModal(addCardModal);
+
+  const submitBtn = addCardFormElement.querySelector(
+    config.submitButtonSelector
+  );
+  disableButton(submitBtn, config);
 }
+
 const handleEscEvent = (evt, action) => {
   const activeModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
