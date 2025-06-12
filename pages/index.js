@@ -86,6 +86,12 @@ function closeModal(modal) {
   document.removeEventListener("keyup", handleEscKey);
 }
 
+const renderCard = (cardData) => {
+  const card = new Card(cardData, "#card-template", openModal);
+  const cardGetView = card.getView();
+  cardListEl.prepend(cardGetView);
+};
+
 /* -------------------------------------------------------------------------- */
 /*                                 Validation                                 */
 /* -------------------------------------------------------------------------- */
@@ -116,9 +122,7 @@ addFormValidator.enableValidation();
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template", openModal);
-  const cardGetView = card.getView();
-  cardListEl.append(cardGetView);
+  renderCard(cardData);
 });
 
 function handleProfileEditSubmit(e) {
@@ -133,14 +137,14 @@ function handleAddCardFormSubmit(e) {
     name: cardTitleInput.value,
     link: cardUrlInput.value,
   };
-  const card = new Card(cardData, "#card-template", openModal);
+  renderCard(cardData);
   cardListEl.prepend(card.getView());
   cardTitleInput.value = "";
   cardUrlInput.value = "";
   closeModal(addCardModal);
 
   const submitBtn = addCardFormElement.querySelector(
-    config.submitButtonSelector
+    validationSettings.submitButtonSelector
   );
   disableButton(submitBtn, config);
 }
