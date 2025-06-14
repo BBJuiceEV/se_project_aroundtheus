@@ -138,7 +138,6 @@ function handleAddCardFormSubmit(e) {
     link: cardUrlInput.value,
   };
   renderCard(cardData);
-  cardListEl.prepend(card.getView());
   cardTitleInput.value = "";
   cardUrlInput.value = "";
   closeModal(addCardModal);
