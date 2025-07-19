@@ -1,30 +1,34 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+import "./index.css";
+import UserInfo from "../utils/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+    title: "Yosemite Valley",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
   {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+    title: "Lake Louise",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
   },
   {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+    title: "Bald Mountains",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+    title: "Latemar",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
   },
   {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+    title: "Vanoise National Park",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   },
   {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+    title: "Lago di Braies",
+    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
 
@@ -77,17 +81,28 @@ const imageViewImgEl = imageViewModal.querySelector("#view-image-modal-pic");
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keyup", handleEscKey);
-}
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keyup", handleEscKey);
-}
 
-const renderCard = (cardData) => {
-  const card = new Card(cardData, "#card-template", openModal);
+const formCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+formCardPopup.setEventListeners();
+
+const formProfilePopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
+formProfilePopup.setEventListeners();
+
+const imagePopup = new PopupWithImage("#view-image-modal");
+imagePopup.setEventListeners();
+
+const renderCard = (data) => {
+  const card = new Card(
+    data,
+    "#card-template",
+    imagePopup.open.bind(imagePopup)
+  );
   const cardGetView = card.getView();
   cardListEl.prepend(cardGetView);
 };
@@ -125,76 +140,35 @@ initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit() {
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  formProfilePopup.close();
 }
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const cardData = {
-    name: cardTitleInput.value,
-    link: cardUrlInput.value,
-  };
-  renderCard(cardData);
-  cardTitleInput.value = "";
-  cardUrlInput.value = "";
-  closeModal(addCardModal);
+function handleAddCardFormSubmit(data) {
+  renderCard(data);
+  formCardPopup.close();
 
-  const submitBtn = addCardFormElement.querySelector(
+  /* const submitBtn = addCardFormElement.querySelector(
     validationSettings.submitButtonSelector
   );
-  disableButton(submitBtn, config);
+  disableButton(submitBtn, config);*/
 }
-
-const handleEscEvent = (evt, action) => {
-  const activeModal = document.querySelector(".modal_opened");
-  if (evt.key === "Escape") {
-    action(activeModal);
-  }
-};
-const handleEscKey = (evt) => {
-  evt.preventDefault();
-  handleEscEvent(evt, closeModal);
-};
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
-
-profileFormElement.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 //* Profile Edit
 profileEditBtn.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
+  formProfilePopup.open();
 });
-profileModalCloseBtn.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
 
 //* add new card
-addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
-addNewCardModalCloseBtn.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
-//*
-imageViewCloseBtn.addEventListener("click", () => {
-  closeModal(imageViewModal);
-});
+addNewCardBtn.addEventListener("click", () => formCardPopup.open());
+/*imageViewCloseBtn.addEventListener("click", () => {
+  imagePopup.close();
+});*/
 
 // close modal when clicking on the overlay
-const handleModalClose = (evt) => {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal_opened")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-};
-const modals = document.querySelectorAll(".modal");
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", handleModalClose);
-});

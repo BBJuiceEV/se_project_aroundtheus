@@ -6,13 +6,12 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
     <title>Around The US</title>
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/Vector_ATU.svg"
+          src="<%=require('./images/Vector_ATU.svg')%>"
           class="header__logo"
           alt="AroundTheU.S.Logo"
         />
@@ -20,7 +19,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Avatar"
             class="profile__image"
           />
@@ -61,7 +60,7 @@
             class="modal__input"
             type="text"
             name="name"
-            placeholder="name"
+            placeholder="Name"
             id="edit-profile-name-input"
             minlength="2"
             maxlength="40"
@@ -72,7 +71,7 @@
             class="modal__input"
             type="text"
             name="description"
-            placeholder="description"
+            placeholder="Description"
             id="edit-profile-description-input"
             minlength="2"
             maxlength="200"

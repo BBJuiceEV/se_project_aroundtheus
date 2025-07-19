@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(data, cardSelector, openModal) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor(data, cardSelector, openImgModal) {
+    this._name = data.title;
+    this._link = data.url;
     this._cardSelector = cardSelector;
-    this._modalOpen = openModal;
+    this._modalOpen = openImgModal;
   }
 
   _setEventListeners() {
@@ -20,6 +20,7 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
+
     //".card__delete-button"
     this._cardElement
       .querySelector(".card__delete-button")
@@ -40,10 +41,11 @@ export default class Card {
   }
 
   _handleImageClick() {
-    document.querySelector(".modal__image").src = this._link;
-    document.querySelector(".modal__image").alt = this._name;
-    document.querySelector(".modal__view_image-title").textContent = this._name;
-    this._modalOpen(document.querySelector("#view-image-modal"));
+    const data = {
+      name: this._name,
+      link: this._link,
+    };
+    this._modalOpen(data);
   }
 
   getView() {
