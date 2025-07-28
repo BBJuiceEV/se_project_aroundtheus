@@ -113,11 +113,6 @@ function handleProfileEditSubmit() {
 function handleAddCardFormSubmit(data) {
   renderCard(data);
   formCardPopup.close();
-
-  /* const submitBtn = addCardFormElement.querySelector(
-    validationSettings.submitButtonSelector
-  );
-  disableButton(submitBtn, config);*/
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
@@ -132,8 +127,3 @@ profileEditBtn.addEventListener("click", () => {
 
 //* add new card
 addNewCardBtn.addEventListener("click", () => formCardPopup.open());
-/*imageViewCloseBtn.addEventListener("click", () => {
-  imagePopup.close();
-});*/
-
-// close modal when clicking on the overlay
