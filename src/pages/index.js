@@ -1,36 +1,10 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css";
-import UserInfo from "../utils/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-
-const initialCards = [
-  {
-    title: "Yosemite Valley",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    title: "Lake Louise",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    title: "Bald Mountains",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    title: "Latemar",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    title: "Vanoise National Park",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    title: "Lago di Braies",
-    url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+import Section from "../utils/Section.js";
+import { initialCards } from "../utils/Section.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -57,11 +31,6 @@ const profileModalCloseBtn = profileEditModal.querySelector(
 const addNewCardBtn = document.querySelector("#profile-add-button");
 const addNewCardModalCloseBtn = addCardModal.querySelector(
   "#add-card-modal-close-button"
-);
-const likeBtn = document.querySelector(".card__like-button");
-const deleteCardBtn = document.querySelector(".card__delete-button");
-const imageViewCloseBtn = imageViewModal.querySelector(
-  "#view-image-modal-close-button"
 );
 
 // Form Data
@@ -125,20 +94,16 @@ const editFormValidator = new FormValidator(
 const addFormValidator = new FormValidator(
   validationSettings,
   addCardFormElement
-  //FormValidator.resetValidation()
 );
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
-//editFormValidator.resetValidation();
-//addFormValidator.resetValidation();
 
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
-initialCards.forEach((cardData) => {
-  renderCard(cardData);
-});
+const cardRendering = new Section(initialCards, renderCard, ".cards__list");
+cardRendering.renderItems();
 
 function handleProfileEditSubmit() {
   profileName.textContent = profileNameInput.value;
