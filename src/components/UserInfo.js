@@ -5,14 +5,14 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    const UserIdentity = {
+    const userIdentity = {
       name: this._profileName.textContent,
-      job: this._profileDescription.textContent,
+      description: this._profileDescription.textContent,
     };
-    return UserIdentity;
+    return userIdentity;
   }
-  setUserInfo(UserIdentity) {
-    this._profileName.textContent = UserIdentity.name;
-    this._profileDescription.textContent = UserIdentity.job;
+  setUserInfo(userIdentity) {
+    this._profileName.textContent = userIdentity.name;
+    this._profileDescription.textContent = userIdentity.description;
   }
 }

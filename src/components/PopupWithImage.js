@@ -3,20 +3,18 @@ import Popup from "./Popup.js";
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
+    this._image = this._popupElement.querySelector(".modal__image");
+    this._imagtTitle = this._popupElement.querySelector(
+      ".modal__view_image-title"
+    );
   }
 
   open(data) {
-    this._popupElement.querySelector(".modal__image").src = data.link;
-    this._popupElement.querySelector(".modal__image").alt = data.name;
-    this._popupElement.querySelector(".modal__view_image-title").textContent =
-      data.name;
+    this._image.src = data.link;
+    this._image.alt = data.name;
+    this._imagtTitle.textContent = data.name;
     super.open();
   }
-
-  setEventListeners() {
-    super.setEventListeners();
-  }
 }
-
 //index.js
 //const newCardPopup = new PopupWithForm("#add-card-modal", (handleFormSubmit) => {});

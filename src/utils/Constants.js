@@ -1,21 +1,3 @@
-export default class Section {
-  constructor(items, renderer, classSelector) {
-    this._items = items;
-    this._renderer = renderer;
-    this.classSelector = classSelector;
-    this._container = document.querySelector(classSelector);
-  }
-  renderItems() {
-    this._items.forEach((item) => {
-      this.addItem(item);
-    });
-  }
-  addItem(item) {
-    const renderer = this._renderer(item);
-    this._container.append(renderer);
-  }
-}
-
 export const initialCards = [
   {
     title: "Yosemite Valley",
@@ -42,3 +24,14 @@ export const initialCards = [
     url: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/*                                 Validation                                 */
+/* -------------------------------------------------------------------------- */
+export const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};

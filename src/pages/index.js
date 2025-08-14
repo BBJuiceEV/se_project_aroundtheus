@@ -1,10 +1,13 @@
 import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
 import "./index.css";
+import FormValidator from "../components/FormValidator";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import Section from "../utils/Section.js";
-import { initialCards } from "../utils/Section.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import { initialCards } from "../utils/Constants.js";
+import { validationSettings } from "../utils/Constants.js";
+import { data } from "autoprefixer";
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -73,18 +76,7 @@ const renderCard = (data) => {
     imagePopup.open.bind(imagePopup)
   );
   const cardGetView = card.getView();
-  cardListEl.prepend(cardGetView);
-};
-
-/* -------------------------------------------------------------------------- */
-/*                                 Validation                                 */
-/* -------------------------------------------------------------------------- */
-const validationSettings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+  cardRendering.addItem(cardGetView);
 };
 
 const editFormValidator = new FormValidator(
@@ -105,9 +97,10 @@ addFormValidator.enableValidation();
 const cardRendering = new Section(initialCards, renderCard, ".cards__list");
 cardRendering.renderItems();
 
-function handleProfileEditSubmit() {
-  profileName.textContent = profileNameInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+const userInfo = new UserInfo(".profile__name", ".profile__description");
+
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo(data);
   formProfilePopup.close();
 }
 function handleAddCardFormSubmit(data) {
@@ -120,8 +113,8 @@ function handleAddCardFormSubmit(data) {
 
 //* Profile Edit
 profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  profileNameInput.value = userInfo.getUserInfo().name;
+  profileDescriptionInput.value = userInfo.getUserInfo().description;
   formProfilePopup.open();
 });
 
