@@ -5,9 +5,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import { initialCards } from "../utils/Constants.js";
-import { validationSettings } from "../utils/Constants.js";
-import { data } from "autoprefixer";
+import { initialCards, validationSettings } from "../utils/Constants.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -106,6 +104,7 @@ function handleProfileEditSubmit(data) {
 function handleAddCardFormSubmit(data) {
   renderCard(data);
   formCardPopup.close();
+  addCardFormElement.reset();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
@@ -113,8 +112,9 @@ function handleAddCardFormSubmit(data) {
 
 //* Profile Edit
 profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = userInfo.getUserInfo().name;
-  profileDescriptionInput.value = userInfo.getUserInfo().description;
+  const { name, description } = userInfo.getUserInfo();
+  profileNameInput.value = name;
+  profileDescriptionInput.value = description;
   formProfilePopup.open();
 });
 

@@ -8,11 +8,9 @@ export default class Card {
 
   _setEventListeners() {
     //"#view-image-modal"
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick();
-      });
+    this._cardImage.addEventListener("click", () => {
+      this._handleImageClick();
+    });
 
     //".card__like-button"
     this._cardElement
